@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <locale.h>
+#include <Windows.h>
 
 /* Количество шагов в истории изменения (сколько снапшотов измененного текста хранится).
 * Значение - 35, так как по логике количество замен не должно превышать мощность алфавита */
@@ -21,6 +21,8 @@
 #define delimeters " ,-.:;\n"
 // "Мощность" алфавита, то есть количество различных букв в нем
 #define alphabetCardinality 33
+// Кодировка консоли для корректного отображения кириллицы
+#define RUS_ENCODING 1251
 
 // Структура для подсчета частоты определенной буквы в тексте. letter - буква, count - сколько раз она встречается в тексте
 typedef struct {
@@ -49,10 +51,9 @@ void goBack(size_t steps);
 void replaceByFrequencyAlgorithm();
 
 void main(void) {
-	size_t i;
-	setlocale(LC_ALL, "Rus");
-	system("chcp 1251");
-	system("cls");
+	size_t i = 0;
+	SetConsoleCP(RUS_ENCODING);
+	SetConsoleOutputCP(RUS_ENCODING);
 
 	char inputFileName[100], outputFileName[100];
 	puts("Введите путь к файлу с входными данными:");
