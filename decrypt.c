@@ -32,7 +32,7 @@ void analyseText();
 void groupByWordLength();
 void groupByEncryptedLettersNumber();
 void showCurrentCryptogramState();
-void replaceLetters();
+void replaceLetters(char* replaceString);
 void goBack(size_t steps);
 void replaceByFrequencyAlgorithm();
 
