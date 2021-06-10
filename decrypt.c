@@ -55,11 +55,11 @@ void main(void) {
 	SetConsoleCP(RUS_ENCODING);
 	SetConsoleOutputCP(RUS_ENCODING);
 
-	char inputFileName[100], outputFileName[100];
+	char inputFileName[100] = { 0 }, outputFileName[100] = { 0 };
 	puts("Введите путь к файлу с входными данными:");
-	gets(inputFileName);
+	gets_s(inputFileName, 100);
 	puts("Введите путь к файлу, куда будет записан результат: ");
-	gets(outputFileName);
+	gets_s(outputFileName, 100);
 	FILE* inputFile = fopen(inputFileName, "r"), * outputFile = fopen(outputFileName, "w+");
 	for (i = 0; (history[currentStep][i] = fgetc(inputFile)) != EOF; i++);
 	history[currentStep][i] = '\0';
